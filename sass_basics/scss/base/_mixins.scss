@@ -1,0 +1,13 @@
+//mixins
+
+// @warn example:
+  // @mixin old {
+  //   @warn "Please use new mixin instead";
+  // }
+
+
+@mixin roundy($radius-one, $radius-two) {
+  border-radius: $radius-one;
+  border-top-right-radius: $radius-two;
+  border-top-left-radius: $radius-two;
+}

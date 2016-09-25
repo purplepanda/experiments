@@ -1,0 +1,164 @@
+@function pxify($value) {
+  @return unquote($value + 'px');
+}
+
+//interpolation, if, if/else
+// #{  }
+@mixin color_class($color) {
+  .#{$color} {
+    color: $color;
+    @if $color == red {
+      border: 1px solid black;
+    }
+  }
+}
+
+@mixin box($width) {
+  @if $width > 100px {
+    padding: 0px;
+  }  @else if $width == 100xp {
+    padding: 5px;
+  } @else {
+    padding: 10px;
+  }
+}
+
+@include color_class(red);
+//outputs:
+//.red.color {
+//   color: red;
+// }
+
+
+
+
+
+body {
+  background-color: desaturate($text-color, 55%);
+  font-family: Futura, sans-serif;
+  color: $text-color;
+  > h1 {
+    font-size: 3em;
+    color: #eee;
+    margin: $margin-primary 0 0 $margin-primary;
+  }
+}
+
+div > .machine {
+  height: 100px;
+  width: 255px;
+  border: 1px solid black;
+}
+
+.color {
+  background: $color;
+}
+
+.red, .blue, .green {
+  float: left;
+}
+
+.red {
+  background: red;
+  width: pxify(red($color));
+}
+.blue {
+  background: blue;
+  width: pxify(blue($color));
+}
+.green {
+  background: green;
+  width: pxify(green($color));
+}
+
+@mixin box($size, $color, $display: block) {
+  width: $size;
+  height: $size;
+  background: $color;
+  display: $display;
+}
+
+.box {
+  @include box(25px, cyan);
+}
+
+@each $member in thom, jonny, colin, phil {
+  .bandmember.#{$member} {
+    background: url("images/#{$member}");
+  }
+}
+
+@mixin band($name, $members...) {
+  @each $member in $members {
+    .#{$name}.#{$member} {
+      background: url("images/#{$member}");
+    }
+  }
+}
+@include band(radiohead, thom, jonny, colin, phil);
+
+@mixin rainbow($colors...) {
+  @each $color in $colors {
+     .#{$color} {
+      background: $color;
+     }
+  }
+}
+
+@for $i from 1 through 100 {
+  .box:nth-child(#{$i}) {
+    background-color: darken(white, $i);
+  }
+}
+
+.button {
+  @include roundy(4px, 8px);
+  background-color: #345;
+}
+
+%bar {
+  height: 14px;
+  font-size: 10px;
+  > div {
+    float: left;
+    clear: none;
+  }
+}
+
+.menu {
+  @extend %bar;
+  background-color: #345;
+}
+.nav {
+  @extend %bar;
+}
+
+.entry {
+  background-color: white;
+  margin: $margin-primary;
+  padding: $margin-primary * 1.5;
+  h1 {
+  font-size: 1.2em;
+  }
+  .date {
+    font-size: 0.4em;
+    color: complement($text-color);
+  }
+  a {
+    color: lighten($text-color, 30%);
+    &:hover {
+      color: lighten($text-color, 20%);
+    }
+  }
+}
+
+
+//extends are good for more ...
+//placeholders use % instead of . so they don't clog up the css output with unnecessary classes
+//mixins are good for extended logic
+
+
+// &
+// allows us to reverse the order of nesting;
+// referencing parent selectors
+// generally telling us we are still in the same zone as the element above
