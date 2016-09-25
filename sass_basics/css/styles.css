@@ -1,0 +1,32 @@
+body {
+  background-color: #333;
+  font-family: Futura, sans-serif; }
+  body > h1 {
+    font-size: 3em;
+    color: #eee;
+    margin: 20px 0 0 20px; }
+
+.box {
+  border-radius: 12px;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px; }
+
+.button {
+  border-radius: 4px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  background-color: #345; }
+
+.entry {
+  background-color: white;
+  margin: 20px;
+  padding: 30px; }
+  .entry h1 {
+    font-size: 1.2em; }
+  .entry .date {
+    font-size: 0.4em;
+    color: #333; }
+  .entry a {
+    color: red; }
+    .entry a:hover {
+      color: cyan; }

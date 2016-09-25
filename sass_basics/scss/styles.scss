@@ -1,0 +1,61 @@
+//variables
+
+$primary-color: #333;
+$margin-primary: 20px;
+
+
+//mixins
+
+@mixin roundy($radius-one, $radius-two) {
+  border-radius: $radius-one;
+  border-top-right-radius: $radius-two;
+  border-top-left-radius: $radius-two;
+}
+
+
+
+
+body {
+  background-color: $primary-color;
+  font-family: Futura, sans-serif;
+  > h1 {
+    font-size: 3em;
+    color: #eee;
+    margin: $margin-primary 0 0 $margin-primary;
+  }
+}
+
+
+.box {
+  @include roundy(12px, 25px);
+}
+
+.button {
+  @include roundy(4px, 8px);
+  background-color: #345;
+}
+
+.entry {
+  background-color: white;
+  margin: $margin-primary;
+  padding: $margin-primary * 1.5;
+  h1 {
+  font-size: 1.2em;
+  }
+  .date {
+    font-size: 0.4em;
+    color: $primary-color;
+  }
+  a {
+    color: red;
+    &:hover {
+      color: cyan;
+    }
+  }
+}
+
+
+// &
+// allows us to reverse the order of nesting;
+// referencing parent selectors
+// generally telling us we are still in the same zone as the element above
