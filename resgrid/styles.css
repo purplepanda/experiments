@@ -5,13 +5,12 @@ body {
 }
 
 img {
-  display: inline-block;
   width: 100%;
 }
 
 .left-left {
   width: 61%;
-  display: inline-block;
+  /*display: inline-block;*/
   float: left;
 }
 
@@ -22,21 +21,18 @@ img {
 
 .right-right {
   width: 61%;
-  display: inline-block;
+  /*display: inline-block;*/
   float: right;
 }
 
 .right-left {
   width: 39%;
-  display: inline-block;
+  /*display: inline-block;*/
   float: right;
 }
 
-@media(max-width: 789px) {
-  .left-left, .right-right {
-    width: 100%;
-  }
-  .left-right, .right-left {
+@media(max-width: 786px) {
+  .left-left, .right-right, .left-right, .right-left {
     width: 100%;
   }
   .left-right img {
